@@ -11,8 +11,14 @@ using PhoneApp1.Resources;
 
 namespace PhoneApp1
 {
+
+    
+
     public partial class MainPage : PhoneApplicationPage
     {
+
+        List<personas> listapersonas = new List<personas>();
+
         // Constructor
         public MainPage()
         {
@@ -20,6 +26,29 @@ namespace PhoneApp1
 
             // Código de ejemplo para traducir ApplicationBar
             //BuildLocalizedApplicationBar();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            listapersonas.Add(new personas { Nombre = "Estefania", Codigo = 2 });
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            var query = listapersonas.Where(xxx => xxx.Codigo == 2).Select(x => x);
+
+            //mOSTRAR CADA UNO
+
+            foreach (var item in query)
+            {
+                MessageBox.Show(item.Nombre);
+            }
+
+            //Mostrar cantidad
+
+            MessageBox.Show(query.Select(x=> x.Codigo).Sum().ToString());
+
+
         }
 
         // Código de ejemplo para compilar una ApplicationBar traducida
